@@ -1545,6 +1545,8 @@ dm = 0
 @client.event
 async def on_ready():
   print('We have logged in as (0.user)')
+  await bot.change_presence(activity=discord.CustomActivity(name='Made By The Hend'))
+
 
 @client.event
 async def on_message(message):
