@@ -1630,7 +1630,7 @@ async def on_message(message):
   
 
 
-client.run('Nzk5NDMxNzA1NDcxMDkwNzE5.YADeyw.6qCqdhbmagbb2ZCn1cJSJRaZDgk')
+client.run(os.environ['DISCORD_TOKEN'])
 
 
 
