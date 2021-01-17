@@ -5,7 +5,6 @@ from datetime import datetime
 import asyncio
 import random
 import time
-from random_word import RandomWords
 
 from pytz import timezone
 tz = timezone('EST')
