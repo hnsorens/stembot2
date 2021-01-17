@@ -5,6 +5,11 @@ from datetime import datetime
 import asyncio
 import random
 import time
+from random_word import RandomWords
+
+from pytz import timezone
+tz = timezone('EST')
+datetime.now(tz) 
 
 client = commands.Bot(command_prefix='+')
 #non matteo
@@ -1545,11 +1550,14 @@ dm = 0
 @client.event
 async def on_ready():
   print('We have logged in as (0.user)')
+  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='Hendy')) 
 
 
 @client.event
 async def on_message(message):
     global started
+    if (message.author == client.user):
+      return
     if (message.author.id == 763922506394370048 and started == False):
         dm = message.author
         started = True
@@ -1558,12 +1566,25 @@ async def on_message(message):
     if message.content.startswith('+ban'):
         await message.channel.send('no')
     if message.content.startswith('+time'):
-        await message.channel.send(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+        tz = timezone('EST')
+        datetime.now(tz) 
+        await message.channel.send(datetime.now(tz).strftime("%m/%d/%Y %H:%M:%S"))
     if message.content.startswith('+random'):
         global nouns
-        noun1 = nouns[random.randrange(0,1500)]
-        noun2 = nouns[random.randrange(0,1500)]
-        await message.channel.send(noun1 + ' ' + noun2)
+        word = random.randrange(1,4)
+        if (word == 1):
+          noun1 = nouns[random.randrange(0,1500)]
+          noun2 = " "
+          noun3 = " "
+        if (word == 2):
+          noun1 = nouns[random.randrange(0,1500)]
+          noun2 = nouns[random.randrange(0,1500)]
+          noun3 = " "
+        if (word == 3):
+          noun1 = nouns[random.randrange(0,1500)]
+          noun2 = nouns[random.randrange(0,1500)]
+          noun3 = nouns[random.randrange(0,1500)]
+        await message.channel.send(noun1 + ' ' + noun2 + ' ' + noun3)
     for attachment in message.attachments:
         for x in imageBannedMembers:
             if (message.author.id == x):
@@ -1577,6 +1598,34 @@ async def on_message(message):
                     await dm.send('image deleted')
                     await dm.send(message.author)
                     await dm.send('__ __')
+    if (message.content.startswith('+is') and message.content.endswith('gud')):
+      [arg1,arg2,arg3] = message.content.split(" ", 3)
+      if (arg2.lower() == 'hendy' or arg2.lower() == 'chris'):
+        await message.channel.send("yes")
+      else:
+        await message.channel.send("Idk")
+    if (message.content.startswith('+is') and message.content.endswith('bad')):
+      [arg1,arg2,arg3] = message.content.split(" ", 3)
+      if (arg2.lower() == 'hendy' or arg2.lower() == 'chris'):
+        await message.channel.send("no")
+      else:
+        await message.channel.send("Idk")
+    if (' k ' in str(message.content) or message.content.startswith('k ') or        message.content.endswith(' k') or message.content == 'k'):
+      msg = message.content
+      await message.delete()
+      await message.channel.send("what {0.author.mention}".format(message) + ' meant to say was:')
+      if (' k ' in str(msg)):
+        [first, second] = msg.split(" k ",2)
+        await message.channel.send(first+' ok '+second)
+      elif (msg.startswith('k ')):
+        await message.channel.send('ok ' + str(message.content)[2:])
+      elif (msg.endswith(' k')):
+        await message.channel.send(str(message.content)[:-2] + ' ok')
+      elif (msg == 'k'):
+        await message.channel.send('ok')
+      
+
+      
 
   
 
@@ -1631,7 +1680,9 @@ async def on_message(message):
   
 
 
-client.run(os.environ['DISCORD_TOKEN'])
+
+
+client.run(os.getenv('TOKEN'))
 
 
 
