@@ -1647,6 +1647,11 @@ async def on_message(message):
       await message.channel.send('+is ___ gud - lets you know if something is gud')
       await message.channel.send('+is ___ bad - lets you know if something is bad')
       await message.channel.send('+code - brings you to code for the bot if you are interested')
+    if (int(datetime.now(timezone('EST')).strftime("%H")) > 1 and int(datetime.now(timezone('EST')).strftime("%H")) < 4):
+      if (message.content.startswith('+test')):
+        x = random.randrange(0,5)
+        if x == 3:
+          await message.channel.send("{0.author.mention}".format(message) + ' Sleep')
       
 
       
