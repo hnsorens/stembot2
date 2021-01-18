@@ -1633,6 +1633,15 @@ async def on_message(message):
         await message.channel.send("You dont have permission to use this command")
     if message.content.startswith('+code'):
       await message.channel.send('https://github.com/hnsorens/stembot2')
+    if (message.content.startswith("+help")):
+      await message.channel.send('+help - you need help')
+      await message.channel.send('+time - gets the time and day')
+      await message.channel.send('+socrative - gets the socrative answers')
+      await message.channel.send('+changeSocrative - changes the socrative answers')
+      await message.channel.send('+random - does something random')
+      await message.channel.send('+is ___ gud - lets you know if something is gud')
+      await message.channel.send('+is ___ bad - lets you know if something is bad')
+      await message.channel.send('+code - brings you to code for the bot if you are interested')
       
 
       
