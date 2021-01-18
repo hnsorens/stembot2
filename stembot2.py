@@ -1563,8 +1563,6 @@ async def on_message(message):
       return
     if (message.author.id == 763922506394370048):
         dm = message.author
-    if message.content.startswith('kk'):
-        await message.channel.send('*k')
     if message.content.startswith('+ban'):
         await message.channel.send('no')
     if message.content.startswith('+time'):
