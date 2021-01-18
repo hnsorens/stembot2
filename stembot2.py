@@ -10,6 +10,9 @@ from pytz import timezone
 tz = timezone('EST')
 datetime.now(tz) 
 
+SocrativeAnswers = 'Unknown'
+SocrativeTime = 'Unknown'
+
 client = commands.Bot(command_prefix='+')
 imageBannedMembers = [789695455721947157,632551942605766666,763922506394370048]
 nouns = [
