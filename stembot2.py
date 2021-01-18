@@ -1561,9 +1561,8 @@ async def on_message(message):
     global SocrativeTime
     if (message.author == client.user):
       return
-    if (message.author.id == 763922506394370048 and started == False):
+    if (message.author.id == 763922506394370048):
         dm = message.author
-        started = True
     if message.content.startswith('kk'):
         await message.channel.send('*k')
     if message.content.startswith('+ban'):
