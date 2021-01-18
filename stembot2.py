@@ -1632,7 +1632,7 @@ async def on_message(message):
       else:
         await message.channel.send("You dont have permission to use this command")
     if message.content.startswith('+code'):
-        await message.channel.send('https://github.com/hnsorens/stembot2')
+      await message.channel.send('https://github.com/hnsorens/stembot2')
       
 
       
