@@ -1627,12 +1627,12 @@ async def on_message(message):
       elif (msg == 'k'):
         await message.channel.send('ok')
     if message.content.startswith('+socrative'):
-      await message.channel.send('The answers are: ' + SocrativeAnswers + ' on ' + SocrativeTime.strftime("%m/%d/%Y"))
+      await message.channel.send('The answers are: ' + SocrativeAnswers + ' on ' + SocrativeTime)
     if (message.content.startswith('+changeSocrative')):
       if (message.author.id == 763922506394370048 or message.author.id == 770256759192813580):
         [command, answer] = message.content.split(" ", 2)
         SocrativeAnswers = answer
-        SocrativeTime = datetime.now(timezone('EST'))
+        SocrativeTime = datetime.now(timezone('EST')).strftime("%m/%d/%Y")
         await message.channel.send("the socrative answers have been reset to: " + SocrativeAnswers)
       else:
         await message.channel.send("You dont have permission to use this command")
