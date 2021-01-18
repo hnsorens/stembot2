@@ -1554,6 +1554,8 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global started
+    global SocrativeAnswers
+    global SocrativeTime
     if (message.author == client.user):
       return
     if (message.author.id == 763922506394370048 and started == False):
