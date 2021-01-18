@@ -11,7 +11,6 @@ tz = timezone('EST')
 datetime.now(tz) 
 
 client = commands.Bot(command_prefix='+')
-#non matteo
 imageBannedMembers = [789695455721947157,632551942605766666,763922506394370048]
 nouns = [
     'people',
