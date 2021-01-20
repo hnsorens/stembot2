@@ -1636,8 +1636,8 @@ async def on_message(message):
       else:
         await message.channel.send("You dont have permission to use this command")
     mentions = [str(m) for m in message.mentions]
-        if str(self.user) in list(mentions):
-            await message.channel.send("wut!")
+    if str(self.user) in list(mentions):
+        await message.channel.send("wut!")
     if message.content.startswith('+code'):
       await message.channel.send('https://github.com/hnsorens/stembot2')
     if (message.content.startswith("+help")):
