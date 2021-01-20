@@ -1635,8 +1635,9 @@ async def on_message(message):
         await message.channel.send("the socrative answers have been reset to: " + SocrativeAnswers)
       else:
         await message.channel.send("You dont have permission to use this command")
-    if message.content.startswith('@Stem Bot#2950') or message.content.startswith('@Greatness'):
-        await message.channel.send("wut!")
+    mentions = [str(m) for m in message.mentions]
+        if str(self.user) in list(mentions):
+            await message.channel.send("wut!")
     if message.content.startswith('+code'):
       await message.channel.send('https://github.com/hnsorens/stembot2')
     if (message.content.startswith("+help")):
