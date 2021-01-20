@@ -1564,12 +1564,7 @@ async def on_message(message):
     global imageBanned
     if (message.author == client.user):
       return
-    if (message.content.startswith('+toggleImageBan')):
-        if (imageBanned == True):
-            imageBanned = False
-        elif (imageBanned == False):
-            imageBanned = True
-        await message.channel.send('ImageBan is not set to ' + imageBanned)
+    
     if (message.author.id == 763922506394370048):
         dm = message.author
     if message.content.startswith('+ban'):
@@ -1656,8 +1651,14 @@ async def on_message(message):
       await dm.send(message.content)
       await dm.send('__ __')
       
-
-      
+    if (message.author.id == 763922506394370048 or message.author.id == 770256759192813580):
+      if (message.content.startswith('+toggleImageBan')):
+        if (imageBanned == True):
+            imageBanned = False
+            await message.channel.send('ImageBan is not set to False')
+        elif (imageBanned == False):
+            imageBanned = True
+            await message.channel.send('ImageBan is not set to True')
 
   
 
