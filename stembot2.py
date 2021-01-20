@@ -1641,7 +1641,7 @@ async def on_message(message):
       await message.channel.send('+help - you need help\n+time - gets the time and day\n+socrative - gets the socrative answers\n+changeSocrative - changes the socrative answers\n+random - does something random\n+is ___ gud - lets you know if something is gud\n+is ___ bad - lets you know if something is bad\n+code - brings you to code for the bot if you are interested\n+request ____ - request something to be added to the bot')
     
     
-    if (int(datetime.now(timezone('EST')).strftime("%H")) > 1 and int(datetime.now(timezone('EST')).strftime("%H")) < 4):
+    if (int(datetime.now(timezone('EST')).strftime("%H")) > -1 and int(datetime.now(timezone('EST')).strftime("%H")) < 5):
       if (message.content.startswith('+test')):
         x = random.randrange(0,5)
         if x == 3:
