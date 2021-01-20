@@ -13,6 +13,8 @@ datetime.now(tz)
 SocrativeAnswers = 'Unknown'
 SocrativeTime = 'Unknown'
 
+imageBanned = True
+
 client = commands.Bot(command_prefix='+')
 imageBannedMembers = [789695455721947157,632551942605766666]
 nouns = [
@@ -1559,8 +1561,15 @@ async def on_message(message):
     global started
     global SocrativeAnswers
     global SocrativeTime
+    global imageBanned
     if (message.author == client.user):
       return
+    if (message.content.startswith('+toggleImageBan')):
+        if (imageBanned == True):
+            imageBanned = False
+        elif (imageBanned == False):
+            imageBanned = True
+        await message.channel.send('ImageBan is not set to ' + imageBanned)
     if (message.author.id == 763922506394370048):
         dm = message.author
     if message.content.startswith('+ban'):
@@ -1590,14 +1599,12 @@ async def on_message(message):
             if (message.author.id == x):
                 await message.delete()
     pic_ext = ['.jpg','.png','.jpeg','.gif']
-    for ext in pic_ext:
-        if message.content.endswith(ext):
-            for x in imageBannedMembers:
-                if (message.author.id == x):
-                    await message.delete()
-                    await dm.send('image deleted')
-                    await dm.send(message.author)
-                    await dm.send('__ __')
+    if (imageBanned = True):
+        for ext in pic_ext:
+            if message.content.endswith(ext):
+                for x in imageBannedMembers:
+                    if (message.author.id == x):
+                        await message.delete()
     if (message.content.startswith('+is') and message.content.endswith('gud')):
       [arg1,arg2,arg3] = message.content.split(" ", 3)
       if (arg2.lower() == 'hendy' or arg2.lower() == 'chris'):
@@ -1636,15 +1643,7 @@ async def on_message(message):
     if message.content.startswith('+code'):
       await message.channel.send('https://github.com/hnsorens/stembot2')
     if (message.content.startswith("+help")):
-      await message.channel.send('+help - you need help')
-      await message.channel.send('+time - gets the time and day')
-      await message.channel.send('+socrative - gets the socrative answers')
-      await message.channel.send('+changeSocrative - changes the socrative answers')
-      await message.channel.send('+random - does something random')
-      await message.channel.send('+is ___ gud - lets you know if something is gud')
-      await message.channel.send('+is ___ bad - lets you know if something is bad')
-      await message.channel.send('+code - brings you to code for the bot if you are interested')
-      await message.channel.send('+request ____ - request something to be added to the bot')
+      await message.channel.send('+help - you need help\n+time - gets the time and day\n+socrative - gets the socrative answers\n+changeSocrative - changes the socrative answers\n+random - does something random\n+is ___ gud - lets you know if something is gud\n+is ___ bad - lets you know if something is bad\n+code - brings you to code for the bot if you are interested\n+request ____ - request something to be added to the bot')
     
     
     if (int(datetime.now(timezone('EST')).strftime("%H")) > 1 and int(datetime.now(timezone('EST')).strftime("%H")) < 4):
