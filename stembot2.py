@@ -1638,7 +1638,7 @@ async def on_message(message):
     if message.content.startswith('+code'):
       await message.channel.send('https://github.com/hnsorens/stembot2')
     if (message.content.startswith("+help")):
-      await message.channel.send('+help - you need help\n+time - gets the time and day\n+socrative - gets the socrative answers\n+changeSocrative - changes the socrative answers\n+random - does something random\n+is ___ gud - lets you know if something is gud\n+is ___ bad - lets you know if something is bad\n+code - brings you to code for the bot if you are interested\n+request ____ - request something to be added to the bot')
+      await message.channel.send('+help - you need help\n+time - gets the time and day\n+socrative - gets the socrative answers\n+changeSocrative - changes the socrative answers\n+random - does something random\n+is ___ gud - lets you know if something is gud\n+is ___ bad - lets you know if something is bad\n+code - brings you to code for the bot if you are interested\n+request ____ - request something to be added to the bot\n+toggleImageBan - toggles the ability to put images in chat if on the banned list')
     
     
     if (int(datetime.now(timezone('EST')).strftime("%H")) > -1 and int(datetime.now(timezone('EST')).strftime("%H")) < 5):
