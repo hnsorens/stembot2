@@ -1589,10 +1589,11 @@ async def on_message(message):
           noun2 = nouns[random.randrange(0,1500)]
           noun3 = nouns[random.randrange(0,1500)]
         await message.channel.send(noun1 + ' ' + noun2 + ' ' + noun3)
-    for attachment in message.attachments:
-        for x in imageBannedMembers:
-            if (message.author.id == x):
-                await message.delete()
+    if (imageBanned == False):
+        for attachment in message.attachments:
+            for x in imageBannedMembers:
+                if (message.author.id == x):
+                    await message.delete()
     pic_ext = ['.jpg','.png','.jpeg','.gif']
     if (imageBanned == True):
         for ext in pic_ext:
