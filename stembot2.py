@@ -1613,19 +1613,7 @@ async def on_message(message):
         await message.channel.send("no")
       else:
         await message.channel.send("Idk")
-    if (' k ' in str(message.content) or message.content.startswith('k ') or        message.content.endswith(' k') or message.content == 'k'):
-      msg = message.content
-      await message.delete()
-      await message.channel.send("what {0.author.mention}".format(message) + ' meant to say was:')
-      if (' k ' in str(msg)):
-        [first, second] = msg.split(" k ",2)
-        await message.channel.send(first+' ok '+second)
-      elif (msg.startswith('k ')):
-        await message.channel.send('ok ' + str(message.content)[2:])
-      elif (msg.endswith(' k')):
-        await message.channel.send(str(message.content)[:-2] + ' ok')
-      elif (msg == 'k'):
-        await message.channel.send('ok')
+    
     if message.content.startswith('+socrative'):
       await message.channel.send('The answers are: ' + SocrativeAnswers + ' on ' + SocrativeTime)
     if (message.content.startswith('+changeSocrative')):
