@@ -13,7 +13,7 @@ datetime.now(tz)
 SocrativeAnswers = 'Unknown'
 SocrativeTime = 'Unknown'
 
-imageBanned = True
+imageBanned = False
 
 client = commands.Bot(command_prefix='+')
 imageBannedMembers = [789695455721947157,632551942605766666]
@@ -1595,12 +1595,12 @@ async def on_message(message):
                 if (message.author.id == x):
                     await message.delete()
     pic_ext = ['.jpg','.png','.jpeg','.gif']
-    if (imageBanned == True):
-        for ext in pic_ext:
-            if message.content.endswith(ext):
-                for x in imageBannedMembers:
-                    if (message.author.id == x):
-                        await message.delete()
+#     if (imageBanned == True):
+#         for ext in pic_ext:
+#             if message.content.endswith(ext):
+#                 for x in imageBannedMembers:
+#                     if (message.author.id == x):
+#                         await message.delete()
     if (message.content.startswith('+is') and message.content.endswith('gud')):
       [arg1,arg2,arg3] = message.content.split(" ", 3)
       if (arg2.lower() == 'hendy' or arg2.lower() == 'chris'):
