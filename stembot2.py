@@ -1553,7 +1553,7 @@ dm = 0
 @client.event
 async def on_ready():
   print('We have logged in as (0.user)')
-  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='Hendy')) 
+  #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='Hendy')) 
 
 
 @client.event
