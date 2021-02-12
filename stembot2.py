@@ -5,15 +5,18 @@ from datetime import datetime
 import asyncio
 import random
 import time
+from random_word import RandomWords
 
 from pytz import timezone
 tz = timezone('EST')
 datetime.now(tz) 
 client = commands.Bot(command_prefix='+')
 
-
+lastMessage = ""
 name = "cap"
-
+quoteResponseWaiting = False
+quoteResponseTimer = 0
+quote = ""
 
 @client.event
 async def on_ready():
@@ -24,6 +27,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
   global name
+  global lastMessage
+  global quoteResponseWaiting
+  global quoteResponseTimer
+  global quote
+  quoteChannel = client.get_channel(809524819661684758)
   if (message.author == client.user):
       return
   if message.content.startswith("!" + name):
@@ -32,11 +40,22 @@ async def on_message(message):
   if message.content.startswith("!rainbowflag"):
     command = message.content
     await message.channel.send(command[13:] + " is a " + str(random.randint(0,10)) + "/10 on the rainbow flag scale")
-  
 
+  if (message.content.startswith("!quote")):
+    quoteResponseTimer = 0
+    await message.channel.send("Are you sure you want to quote " + "\"" + lastMessage.content + "\" by " + '{}'.format(lastMessage.author.mention) + " y/n")
+    quote = lastMessage
+    quoteResponseWaiting = True
+  if (quoteResponseWaiting):
+    quoteResponseTimer += 1
+    if (message.content == "y"):
+      await quoteChannel.send("\"" + quote.content + "\"\n-" + '{}'.format(quote.author.mention))
+    if (quoteResponseTimer > 5 or message.content == "n"):
+      quoteResponseWaiting = False
+      quoteResponseTimer = 0
 
-
-
+  lastMessage = message
+  print(message)
 client.run(os.environ['DISCORD_TOKEN'])
 
 
