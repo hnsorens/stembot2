@@ -16,7 +16,7 @@ name = "cap"
 quoteResponseWaiting = False
 quoteResponseTimer = 0
 quote = ""
-quotter
+quotter = ""
 
 @client.event
 async def on_ready():
