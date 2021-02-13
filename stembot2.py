@@ -20,7 +20,7 @@ quotter = ""
 
 @client.event
 async def on_ready():
-  print('We have logged in as (0.user)')
+  print('We have logged in as {0.user}')
   #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='Hendy')) 
 
 
@@ -50,9 +50,9 @@ async def on_message(message):
     quoteResponseWaiting = True
   if (quoteResponseWaiting):
     quoteResponseTimer += 1
-    if (message.content == "y" and message.author == quotter):
+    if (message.content.lower() == "y" and message.author == quotter):
       await quoteChannel.send("\"" + quote.content + "\"\n-" + '{}'.format(quote.author.mention) + "\n --------------------------------------")
-    if (quoteResponseTimer > 5 or message.content == "n" and message.author == quotter):
+    if (quoteResponseTimer > 5 or message.content.lower() == "n" and message.author == quotter):
       quoteResponseWaiting = False
       quoteResponseTimer = 0
 
