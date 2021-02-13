@@ -50,9 +50,9 @@ async def on_message(message):
     quoteResponseWaiting = True
   if (quoteResponseWaiting):
     quoteResponseTimer += 1
-    if (str(message.content).lower() == "y" and message.author == quotter):
+    if (str(message.content).lower() == "y" or message.content == "Y" and message.author == quotter):
       await quoteChannel.send("\"" + quote.content + "\"\n-" + '{}'.format(quote.author.mention) + "\n --------------------------------------")
-    if (quoteResponseTimer > 5 or str(message.content).lower() == "n" and message.author == quotter):
+    if (quoteResponseTimer > 5 or message.content == "n" or message.content == "N" and message.author == quotter):
       quoteResponseWaiting = False
       quoteResponseTimer = 0
 
