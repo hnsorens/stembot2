@@ -42,19 +42,19 @@ async def on_message(message):
     command = message.content
     await message.channel.send(command[13:] + " is a " + str(random.randint(0,10)) + "/10 on the rainbow flag scale")
 
-  if (message.content.startswith("!quote")):
-    quotter = message.author
-    quoteResponseTimer = 0
-    await message.channel.send("Are you sure you want to quote " + "\"" + lastMessage.content + "\" by " + '{}'.format(lastMessage.author.mention) + " y/n")
-    quote = lastMessage
-    quoteResponseWaiting = True
-  if (quoteResponseWaiting):
-    quoteResponseTimer += 1
-    if (str(message.content).lower() == "y" or message.content == "Y" and message.author == quotter):
-      await quoteChannel.send("\"" + quote.content + "\"\n-" + '{}'.format(quote.author.mention) + "\n --------------------------------------")
-    if (quoteResponseTimer > 5 or message.content == "n" or message.content == "N" and message.author == quotter):
-      quoteResponseWaiting = False
-      quoteResponseTimer = 0
+#   if (message.content.startswith("!quote")):
+#     quotter = message.author
+#     quoteResponseTimer = 0
+#     await message.channel.send("Are you sure you want to quote " + "\"" + lastMessage.content + "\" by " + '{}'.format(lastMessage.author.mention) + " y/n")
+#     quote = lastMessage
+#     quoteResponseWaiting = True
+#   if (quoteResponseWaiting):
+#     quoteResponseTimer += 1
+#     if (str(message.content).lower() == "y" or message.content == "Y" and message.author == quotter):
+#       await quoteChannel.send("\"" + quote.content + "\"\n-" + '{}'.format(quote.author.mention) + "\n --------------------------------------")
+#     if (quoteResponseTimer > 5 or message.content == "n" or message.content == "N" and message.author == quotter):
+#       quoteResponseWaiting = False
+#       quoteResponseTimer = 0
 
   lastMessage = message
   print(message)
