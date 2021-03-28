@@ -40,7 +40,7 @@ async def on_message(message):
     for letters in message.content():
       if (letters == "@"):
         doit = true
-    if (doit == false) 
+    if (doit == false):
       command = message.content
       await message.channel.send(command[5:] + " is " + str(random.randint(0,100)) + "% " + name)
   if message.content.startswith("!rainbowflag"):
